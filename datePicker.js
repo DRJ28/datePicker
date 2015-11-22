@@ -29,7 +29,7 @@ module.directive('datePicker', function() {
         scope.selectedDate='';
         scope.monthList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
         scope.currentMonth = today.getMonth();
-        //scope.currentMonthName = scope.monthList[scope.currentMonth];
+        scope.currentMonthName = scope.monthList[scope.currentMonth];
         scope.currentYear = today.getFullYear();
         scope.weekList = ['Su','Mo','Tu','We','Th','Fr','Sa'];
         //scope.dateList = [];
@@ -81,6 +81,7 @@ module.directive('datePicker', function() {
         
         setCalender();
         
+
         element.on('click', function(ele){
             debugger;
             //open calender
