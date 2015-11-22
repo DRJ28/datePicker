@@ -9,7 +9,7 @@ module.directive('datePicker', function() {
     scope: {
     },
     template: '<div class=\'bdatepicker\'><input type=\'text\' id=\'dssId\'></div>'+
-                '<div class=\'calender-block\'>'+
+                '<div class=\'calender-hidden\'>'+
                     '<div class=\'calender-header\'>'+
                         '<span class=\'previous-button\'></span>'+
                         '<span class=\'month-year\'>{{currentMonthName}}  {{currentYear}}</span>'+
@@ -26,6 +26,7 @@ module.directive('datePicker', function() {
     link: function(scope, element, attrs){
         //debugger;
         var today = new Date();
+        scope.selectedDate='';
         scope.monthList = ['January','February','March','April','May','June','July','August','September','October','November','December'];
         scope.currentMonth = today.getMonth();
         //scope.currentMonthName = scope.monthList[scope.currentMonth];
@@ -82,6 +83,28 @@ module.directive('datePicker', function() {
         
         element.on('click', function(ele){
             debugger;
+            //open calender
+            if (ele.srcElement.id == 'dssId') {
+                debugger;
+                $('#dssId').parent()[0].nextElementSibling.setAttribute("class", "calender-block");
+            };
+
+            if ($('.calender-block').has($(ele.srcElement))) {
+                //clicked inside calender
+                console.log('clicked inside calender');
+            };
+            console.log(ele.srcElement.innerHTML);
+            if (isNaN(parseInt(ele.srcElement.innerHTML))) {
+                //close without date
+                console.log('');
+            }else{
+                //it's a number, make date
+                debugger;
+                scope.selectedDate = ele.srcElement.innerHTML +'/'+ scope.currentMonth +'/'+ scope.currentYear;
+                console.log('user select : ' + scope.selectedDate);
+                //close calender
+                $('#dssId').parent()[0].nextElementSibling.setAttribute("class", "calender-hidden");
+            }
             //ele.srcElement.className
             if (ele.srcElement.className == 'next-button') {
                 setCalender(1);

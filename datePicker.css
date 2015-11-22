@@ -12,6 +12,9 @@
 	width: 280px; 
 	position: relative;
 }
+.calender-hidden{
+	display: none;
+}
 
 .calender-header{
 	height: 40px;
@@ -51,4 +54,8 @@
 
 .calender-body table th,td{
 	padding: 0.4em 0em 0em 1em;
+}
+.calender-body table td:hover{
+	cursor: pointer;
+	border: 1px solid black;
 }
