@@ -1,0 +1,54 @@
+.bdatepicker input[type='text']{
+	background: url('/work/datePicker/calendar-icon.png');
+    background-repeat: no-repeat;
+    width: 20%;
+    background-position: 90%;
+
+}
+
+.calender-block{
+	border:1px solid green;
+	height: 215px;
+	width: 280px; 
+	position: relative;
+}
+
+.calender-header{
+	height: 40px;
+	border: 1px solid red;
+}
+.calender-header .previous-button{
+	background: url('/work/datePicker/Previous-icon.png');
+	background-repeat: no-repeat;
+	background-position: 0em;
+	width: 12%;
+    background-color: aqua;
+    height: 40px;
+    left: 0px;
+    position: absolute;
+    cursor: pointer;
+}
+.calender-header .month-year{
+	width: 76%;
+    position: absolute;
+    height: 40px;
+    /* vertical-align: middle; */
+    text-align: center;
+    top: 12px;
+    left: 12%;
+}
+.calender-header .next-button{
+	background: url('/work/datePicker/Next-icon.png');
+	background-repeat: no-repeat;
+	background-position: 1em;
+	width: 12%;
+    background-color: aqua;
+    height: 40px;
+    right: 0px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.calender-body table th,td{
+	padding: 0.4em 0em 0em 1em;
+}
