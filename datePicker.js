@@ -8,7 +8,7 @@ module.directive('datePicker', function() {
     restrict: 'E',
     scope: {
     },
-    template: '<div class=\'bdatepicker\'><input type=\'text\' id=\'dssId\'></div>'+
+    template: '<div class=\'bdatepicker\'><input type=\'text\' value={{selectedDate}} id=\'dssId\'></div>'+
                 '<div class=\'calender-hidden\'>'+
                     '<div class=\'calender-header\'>'+
                         '<span class=\'previous-button\'></span>'+
@@ -50,6 +50,7 @@ module.directive('datePicker', function() {
  
                 scope.currentMonthName = scope.monthList[scope.currentMonth];
             }
+
             console.log(scope.currentMonthName);
             scope.dateList = [];
             var firstDay = new Date(scope.currentYear, scope.currentMonth, 1);
@@ -76,7 +77,8 @@ module.directive('datePicker', function() {
                     }
                 };
                 scope.dateList.push(week);
-            };
+            }
+
         }
         
         setCalender();
@@ -101,17 +103,22 @@ module.directive('datePicker', function() {
             }else{
                 //it's a number, make date
                 debugger;
-                scope.selectedDate = ele.srcElement.innerHTML +'/'+ scope.currentMonth +'/'+ scope.currentYear;
+                scope.selectedDate = ele.srcElement.innerHTML +'/'+ (scope.currentMonth+1) +'/'+ scope.currentYear;
                 console.log('user select : ' + scope.selectedDate);
+                scope.$apply(function(){
+                    scope.selectedDate;
+                });
                 //close calender
                 $('#dssId').parent()[0].nextElementSibling.setAttribute("class", "calender-hidden");
             }
             //ele.srcElement.className
             if (ele.srcElement.className == 'next-button') {
                 setCalender(1);
+                scope.$apply();
             };
             if (ele.srcElement.className == 'previous-button') {
                 setCalender(-1);
+                scope.$apply();
             };
         });
     }
