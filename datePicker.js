@@ -103,7 +103,7 @@ module.directive('datePicker', function() {
             }else{
                 //it's a number, make date
                 debugger;
-                scope.selectedDate = ele.srcElement.innerHTML +'/'+ (scope.currentMonth+1) +'/'+ scope.currentYear;
+                scope.selectedDate = ele.srcElement.innerHTML +'/'+(scope.currentMonth > 8?'':'0')+ (scope.currentMonth+1) +'/'+ scope.currentYear;
                 console.log('user select : ' + scope.selectedDate);
                 scope.$apply(function(){
                     scope.selectedDate;
