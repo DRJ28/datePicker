@@ -83,7 +83,20 @@ module.directive('datePicker', function() {
         
         setCalender();
         
+        element.on('mouseover',function(ele){
+            console.log('on mouse over');
+            if (!isNaN(parseInt(ele.srcElement.innerHTML)) ) {
+                //add hover class calender-body-table-td-hover to "td"
+                console.log(parseInt(ele.srcElement.innerHTML));
+                ele.srcElement.setAttribute('class', 'calender-body-table-td-hover');
+                debugger;
+            };
+        }).on('mouseout', function(ele){
+            console.log(' mouse out');
+            //remove hover class(ele.srcElement.classList)
+            ele.srcElement.classList.remove('calender-body-table-td-hover');
 
+        });
         element.on('click', function(ele){
             debugger;
             //open calender
@@ -103,7 +116,11 @@ module.directive('datePicker', function() {
             }else{
                 //it's a number, make date
                 debugger;
-                scope.selectedDate = ele.srcElement.innerHTML +'/'+(scope.currentMonth > 8?'':'0')+ (scope.currentMonth+1) +'/'+ scope.currentYear;
+                var setDate = parseInt(ele.srcElement.innerHTML);
+                if (setDate<10) {
+                    setDate = '0'+setDate;
+                };
+                scope.selectedDate = setDate +'/'+(scope.currentMonth > 8?'':'0')+ (scope.currentMonth+1) +'/'+ scope.currentYear;
                 console.log('user select : ' + scope.selectedDate);
                 scope.$apply(function(){
                     scope.selectedDate;
