@@ -59,3 +59,15 @@
 	cursor: pointer;
 	border: 1px solid black;
 }
+.body-display-true{
+	display: block;
+}
+.body-display-false{
+	display: none;
+}
+.calender-body-month{
+
+}
+.calender-body-year{
+	
+}
